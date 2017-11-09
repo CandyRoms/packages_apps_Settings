@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2020-2024 The LineageOS Project
+     Copyright (C) 2020-2024 The AwakenOS Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -21,4 +21,7 @@
 
     <!-- Show battery cycle count -->
     <bool name="config_show_battery_cycle_count" translatable="false">false</bool>
-</resources
+
+    <!-- Device specific doze package -->
+    <string name="config_customDozePackage" translatable="false"></string>
+</resources>
