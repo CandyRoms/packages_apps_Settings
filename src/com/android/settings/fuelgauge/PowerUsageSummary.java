@@ -349,7 +349,6 @@ public class PowerUsageSummary extends PowerUsageBase implements OnLongClickList
                 new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
         BatteryInfo batteryInfo = BatteryInfo.getBatteryInfoOld(context, batteryBroadcast,
                 mStatsHelper.getStats(), elapsedRealtimeUs, false);
-        updateHeaderPreference(batteryInfo);
     }
 
     @VisibleForTesting
