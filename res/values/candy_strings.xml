@@ -18,9 +18,10 @@
     <string name="device_info_protected_single_press">Tap to show info</string>
 
     <!-- About phone screen, CandyRoms version -->
+    <string name="about_device_name">Device</string>
     <string name="candy_version">Candy version</string>
     <string name="candy_version_default">Unknown</string>
-    <string name="keyword_candy_version">CandyRoms version, candy version</string>
+    <string name="keywords_candy_version">CandyRoms version, candy version</string>
 
     <!-- About phone screen, build date -->
     <string name="build_date">Build date</string>
