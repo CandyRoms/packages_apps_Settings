@@ -28,6 +28,10 @@
     <string name="build_date_default">2015-01-01-0000</string>
     <string name="keywords_build_date">build date, build info</string>
 
+   <!-- Black theme for dark mode -->
+    <string name="berry_black_theme_title">Pure black</string>
+    <string name="berry_black_theme_summary">Pure black background for dark theme</string>
+
     <!-- CandyRoms Maintainer -->
     <string name="candy_maintainer">Device Maintainer</string>
 
