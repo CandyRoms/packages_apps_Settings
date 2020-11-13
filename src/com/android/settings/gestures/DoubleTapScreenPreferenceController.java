@@ -64,7 +64,12 @@ public class DoubleTapScreenPreferenceController extends GesturePreferenceContro
 
     @Override
     public int getAvailabilityStatus() {
-        return UNSUPPORTED_ON_DEVICE;
+        // No hardware support for Double Tap
+        if (!getAmbientConfig().doubleTapSensorAvailable()) {
+            return UNSUPPORTED_ON_DEVICE;
+        }
+
+        return AVAILABLE;
     }
 
     @Override

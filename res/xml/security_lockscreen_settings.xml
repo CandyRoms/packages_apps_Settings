@@ -73,7 +73,7 @@
             android:title="@string/doze_on_charge_title"
             android:summary="@string/doze_on_charge_summary" />
 
-        <!--<Preference
+        <Preference
             android:key="ambient_display_tap"
             android:title="@string/ambient_display_tap_screen_title"
             android:fragment="com.android.settings.gestures.TapScreenGestureSettings"
@@ -81,9 +81,10 @@
 
         <Preference
             android:key="double_tap"
-            android:title="@string/doze_double_tap_title"
             android:fragment="com.android.settings.gestures.DoubleTapAmbientSettings"
-            settings:controller="com.android.settings.gestures.DoubleTapAmbientPreferenceController" />
+            android:title="@string/doze_double_tap_title"
+            android:summary="@string/doze_double_tap_summary"
+            settings:userRestriction="no_ambient_display" />
 
         <Preference
             android:key="ambient_display_double_tap"
@@ -91,46 +92,31 @@
             android:fragment="com.android.settings.gestures.DoubleTapScreenSettings"
             settings:controller="com.android.settings.gestures.DoubleTapScreenPreferenceController" />
 
-        <Preference
-            android:key="ambient_display_pick_up"
-            android:title="@string/ambient_display_pickup_title"
-            android:fragment="com.android.settings.gestures.PickupGestureSettings"
-            settings:controller="com.android.settings.gestures.PickupGesturePreferenceController" />-->
-
-        <org.candy.candyshop.preference.SecureSettingSwitchPreference
-            android:key="ambient_display_notification"
-            android:title="@string/doze_title"
-            android:summary="@string/doze_summary"
-            android:defaultValue="true" />
-
         <SwitchPreference
             android:key="pulse_on_new_tracks"
             android:title="@string/pulse_on_new_tracks_title"
             android:summary="@string/pulse_on_new_tracks_summary"
             settings:controller="com.android.settings.display.PulseOnNewTracksPreferenceController" />
 
-        <org.candy.candyshop.preference.SecureSettingSwitchPreference
-            android:key="double_tap_to_wake"
-            android:title="@string/tap_to_wake"
-            android:summary="@string/tap_to_wake_summary"
-            android:defaultValue="true" />
+        <Preference
+            android:key="ambient_display_pick_up"
+            android:title="@string/ambient_display_pickup_title"
+            android:fragment="com.android.settings.gestures.PickupGestureSettings"
+            settings:controller="com.android.settings.gestures.PickupGesturePreferenceController" />
 
-        <!-- Pulse ambient vs full lockscreen on wake -->
+        <SwitchPreference
+            android:key="ambient_display_notification"
+            android:title="@string/doze_title"
+            android:summary="@string/doze_summary"
+            settings:controller="com.android.settings.display.AmbientDisplayNotificationsPreferenceController" />
+
         <SwitchPreference
             android:key="ambient_wake_gestures"
             android:title="@string/ambient_wake_gestures_title"
             android:summary="@string/ambient_wake_gestures_summary"
             settings:controller="com.android.settings.display.AmbientWakeGesturesPreferenceController" />
 
-        <PreferenceScreen
-            android:key="doze_fragment"
-            android:icon="@drawable/ic_ambient"
-            android:title="@string/doze_display_title"
-            android:summary="@string/doze_display_summary"
-            android:fragment="org.candy.candyshop.fragments.doze.DozeSettings" />
-
     </PreferenceCategory>
-
 
     <!-- Work profile settings are at the bottom with high order value to avoid users thinking that
          any of the above settings (including dynamic) are specific to the work profile. -->

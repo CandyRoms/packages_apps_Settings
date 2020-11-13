@@ -59,7 +59,12 @@ public class PickupGesturePreferenceController extends GesturePreferenceControll
 
     @Override
     public int getAvailabilityStatus() {
-        return UNSUPPORTED_ON_DEVICE;
+        // No hardware support for Pickup Gesture
+        if (!getAmbientConfig().dozePickupSensorAvailable()) {
+            return UNSUPPORTED_ON_DEVICE;
+        }
+
+        return AVAILABLE;
     }
 
     @Override
