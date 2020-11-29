@@ -67,7 +67,7 @@
             settings:controller="com.android.settings.display.AmbientDisplayAlwaysOnPreferenceController"
             settings:userRestriction="no_ambient_display" />
 
-        <org.candy.candyshop.preference.SystemSettingSwitchPreference
+        <org.candy.candyshop.preference.SecureSettingSwitchPreference
             android:key="doze_on_charge"
             android:defaultValue="false"
             android:title="@string/doze_on_charge_title"
