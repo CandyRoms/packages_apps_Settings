@@ -238,7 +238,6 @@ public class PowerUsageSummary extends PowerUsageBase implements OnLongClickList
         mLastFullChargePref = (PowerGaugePreference) findPreference(
                 KEY_TIME_SINCE_LAST_FULL_CHARGE);
         mBatteryTemp = (PowerGaugePreference) findPreference(KEY_BATTERY_TEMP);
-        mFooterPreferenceMixin.createFooterPreference().setTitle(R.string.battery_footer_summary);
         mBatteryUtils = BatteryUtils.getInstance(getContext());
 
         if (Utils.isBatteryPresent(getContext())) {
@@ -259,17 +258,9 @@ public class PowerUsageSummary extends PowerUsageBase implements OnLongClickList
                         .launch();
             return true;
         } else if (KEY_BATTERY_TEMP.equals(preference.getKey())) {
-            updateBatteryTempPreference();
-        } 
-        return super.onPreferenceTreeClick(preference);
-    }
-
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        if (savedInstanceState != null) {
-            mBatteryLevel = savedInstanceState.getInt(ARG_BATTERY_LEVEL);
+            toggleBatteryTempUnits();
         }
+        return super.onPreferenceTreeClick(preference);
     }
 
     @Override
@@ -399,6 +390,23 @@ public class PowerUsageSummary extends PowerUsageBase implements OnLongClickList
             } else {
                 mBatteryTemp.setSubtitle(
                     CandyUtils.batteryTemperature(getContext(), true));
+                batteryTemp = true;
+            }
+        }
+    }
+
+    @VisibleForTesting
+    void toggleBatteryTempUnits() {
+        final Context context = getContext();
+        boolean mUseForC = CandyUtils.mccCheck(context);
+        if (mBatteryTemp != null) {
+            if (mUseForC) {
+                mBatteryTemp.setSubtitle(
+                    CandyUtils.batteryTemperature(context, true));
+                batteryTemp = true;
+            } else {
+                mBatteryTemp.setSubtitle(
+                    CandyUtils.batteryTemperature(context, mUseForC));
                 batteryTemp = true;
             }
         }
