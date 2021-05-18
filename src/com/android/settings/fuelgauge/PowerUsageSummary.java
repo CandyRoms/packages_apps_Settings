@@ -341,8 +341,6 @@ public class PowerUsageSummary extends PowerUsageBase implements OnLongClickList
         updateLastFullChargePreference();
         mScreenUsagePref.setSubtitle(StringUtil.formatElapsedTime(getContext(),
                 mBatteryUtils.calculateScreenUsageTime(mStatsHelper), false));
-        mBatteryTemp.setSubtitle(
-                CandyUtils.batteryTemperature(getContext(), batteryTemp));
         updateBatteryTempPreference();
         final long elapsedRealtimeUs = SystemClock.elapsedRealtime() * 1000;
         Intent batteryBroadcast = context.registerReceiver(null,
@@ -381,33 +379,30 @@ public class PowerUsageSummary extends PowerUsageBase implements OnLongClickList
 
     @VisibleForTesting
     void updateBatteryTempPreference() {
-        if (mBatteryTemp != null) {
-            if (batteryTemp) {
-                mBatteryTemp.setSubtitle(
-                    CandyUtils.batteryTemperature(getContext(), false));
-                batteryTemp = false;
-            } else {
-                mBatteryTemp.setSubtitle(
-                    CandyUtils.batteryTemperature(getContext(), true));
-                batteryTemp = true;
-            }
+        final Context context = getContext();
+        boolean mUseForC = CandyUtils.mccCheck(context);
+        if (mUseForC) {
+            mBatteryTemp.setSubtitle(
+                CandyUtils.batteryTemperature(context, true));
+            batteryTemp = true;
+        } else {
+            mBatteryTemp.setSubtitle(
+                CandyUtils.batteryTemperature(context, false));
+            batteryTemp = true;
         }
     }
 
     @VisibleForTesting
     void toggleBatteryTempUnits() {
         final Context context = getContext();
-        boolean mUseForC = CandyUtils.mccCheck(context);
-        if (mBatteryTemp != null) {
-            if (mUseForC) {
-                mBatteryTemp.setSubtitle(
-                    CandyUtils.batteryTemperature(context, true));
-                batteryTemp = true;
-            } else {
-                mBatteryTemp.setSubtitle(
-                    CandyUtils.batteryTemperature(context, mUseForC));
-                batteryTemp = true;
-            }
+        if (batteryTemp) {
+            mBatteryTemp.setSubtitle(
+                CandyUtils.batteryTemperature(context, false));
+            batteryTemp = false;
+        } else {
+            mBatteryTemp.setSubtitle(
+                CandyUtils.batteryTemperature(context, true));
+            batteryTemp = true;
         }
     }
 
