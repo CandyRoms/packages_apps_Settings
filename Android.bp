@@ -51,16 +51,27 @@ android_library {
         "SpaPrivilegedLib-defaults",
     ],
 
-    srcs: ["src/**/*.java", "src/**/*.kt"],
+    srcs: [
+	   "src/**/*.java", "src/**/*.kt",
+	   "CandyShop/src/**/*.java",
+    ],
+
     exclude_srcs: [
         "src/com/android/settings/biometrics/fingerprint2/shared/**/*.kt",
     ],
     use_resource_processor: true,
+
     resource_dirs: [
         "res",
         "res-export", // for external usage
         "res-product",
+	"CandyShop/res",
     ],
+    
+    aaptflags: ["--extra-packages org.candy.candyshop",
+                "--extra-packages github.com.st235.lib_expandablebottombar",
+    ],
+
     static_libs: [
         // External dependencies
         "androidx.navigation_navigation-fragment-ktx",
@@ -105,6 +116,12 @@ android_library {
         "statslog-settings",
         "glide",
         "VendorSupport-preference",
+        "expandable-bottombar",
+        "androidx.navigation_navigation-common-ktx",
+        "androidx.navigation_navigation-fragment-ktx",
+        "androidx.navigation_navigation-runtime-ktx",
+        "androidx.navigation_navigation-ui-ktx",
+        "kotlin-stdlib",
     ],
 
     plugins: ["androidx.room_room-compiler-plugin"],
@@ -165,4 +182,10 @@ filegroup {
 android_library_import {
     name: "glide",
     aars: ["libs/glide-4.15.1.aar"],
+}
+
+android_library_import {
+    name: "expandable-bottombar",
+    aars: ["libs/lib-expandablebottombar-release.aar"],
+    sdk_version: "current",
 }
