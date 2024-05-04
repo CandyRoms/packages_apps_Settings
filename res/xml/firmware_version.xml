@@ -21,6 +21,12 @@
     android:title="@string/firmware_version"
     settings:keywords="@string/keywords_android_version">
 
+   <!-- CandyRoms Logo -->
+     <com.android.settingslib.widget.LayoutPreference
+      android:layout="@layout/candy_logo"
+      android:key="candy_logo"
+      android:selectable="false" /
+
     <!-- Device Name -->
     <Preference
         android:key="about_device_name"
